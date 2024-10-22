@@ -1,101 +1,116 @@
-import Image from "next/image";
+"use client";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Equal, Plus } from "lucide-react";
+import { useState } from "react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [bit1, setBit1] = useState("0");
+  const [bit2, setBit2] = useState("0");
+  const [result, setResult] = useState("0");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const addBits = () => {
+    const sum = parseInt(bit1) + parseInt(bit2);
+    setResult(sum > 1 ? "1" : sum.toString());
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-white">
+      <div className="container mx-auto px-4 py-16">
+        <h1 className="text-4xl font-bold text-center mb-8">
+          Bit Adder: la base de la aritmética digital
+        </h1>
+
+        <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8 mb-8">
+          <p className="text-lg mb-4">
+            Un sumador de bits es un componente fundamental en los circuitos
+            digitales que realiza la suma de dígitos binarios (bits). Es el
+            componente básico de todas las operaciones aritméticas en las
+            computadoras.
+          </p>
+
+          <div className="flex justify-center mb-8">
+            <svg className="w-64 h-32" viewBox="0 0 240 120">
+              <rect
+                x="10"
+                y="10"
+                width="60"
+                height="40"
+                fill="none"
+                stroke="currentColor"
+              />
+              <text x="40" y="35" textAnchor="middle" className="text-sm">
+                Bit 1
+              </text>
+              <rect
+                x="10"
+                y="70"
+                width="60"
+                height="40"
+                fill="none"
+                stroke="currentColor"
+              />
+              <text x="40" y="95" textAnchor="middle" className="text-sm">
+                Bit 2
+              </text>
+              <path d="M70 30 H100 V90 H70" fill="none" stroke="currentColor" />
+              <rect
+                x="100"
+                y="40"
+                width="80"
+                height="40"
+                fill="none"
+                stroke="currentColor"
+              />
+              <text x="140" y="65" textAnchor="middle" className="text-sm">
+                Bit Adder
+              </text>
+              <path d="M180 60 H220" fill="none" stroke="currentColor" />
+              <text x="230" y="65" textAnchor="start" className="text-sm">
+                Sum
+              </text>
+            </svg>
+          </div>
+
+          <p className="text-lg mb-8">
+            Los sumadores de bits se pueden combinar para realizar sumas de
+            números más grandes, formando la base de las unidades lógicas
+            aritméticas (ALU) en los procesadores.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8 mb-8">
+          <h2 className="text-2xl font-semibold mb-4">¡Pruébalo!</h2>
+          <div className="flex items-center justify-center space-x-4 mb-4">
+            <Input
+              type="text"
+              value={bit1}
+              onChange={(e) =>
+                setBit1(e.target.value.replace(/[^01]/g, "").slice(-1))
+              }
+              className="w-16 text-center"
+              maxLength={1}
+            />
+            <Plus size={24} />
+            <Input
+              type="text"
+              value={bit2}
+              onChange={(e) =>
+                setBit2(e.target.value.replace(/[^01]/g, "").slice(-1))
+              }
+              className="w-16 text-center"
+              maxLength={1}
+            />
+            <Equal size={24} />
+            <div className="w-16 h-10 flex items-center justify-center border rounded">
+              {result}
+            </div>
+          </div>
+          <Button onClick={addBits} className="w-full">
+            Add Bits
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }
