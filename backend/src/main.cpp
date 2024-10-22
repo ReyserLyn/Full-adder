@@ -37,13 +37,13 @@ private:
 
 int main()
 {
-  const std::string address = "http://0.0.0.0:8080"; // Listen on all interfaces
+  const std::string address = "http://0.0.0.0:8085";
   MainAPI api(address);
   api.start();
 
   while (true)
   {
-    std::this_thread::sleep_for(std::chrono::seconds(1)); // Sleep to prevent busy loop
+    std::this_thread::sleep_for(std::chrono::seconds(1));
   }
 
   return 0;
