@@ -1,12 +1,12 @@
-import { useState, FormEvent } from 'react';
+import { FormEvent, useState } from "react";
 
 interface AdderExampleProps {
   sumType: string;
 }
 
 const AdderExample: React.FC<AdderExampleProps> = ({ sumType }) => {
-  const [num1, setNum1] = useState<string>('');
-  const [num2, setNum2] = useState<string>('');
+  const [num1, setNum1] = useState<string>("");
+  const [num2, setNum2] = useState<string>("");
   const [result, setResult] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -20,15 +20,18 @@ const AdderExample: React.FC<AdderExampleProps> = ({ sumType }) => {
       const endpoint = `http://0.0.0.0:8085/${sumType}`;
 
       const response = await fetch(endpoint, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ num1: parseInt(num1, 10), num2: parseInt(num2, 10) }),
+        body: JSON.stringify({
+          num1: parseInt(num1, 10),
+          num2: parseInt(num2, 10),
+        }),
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
 
       const data = await response.json();

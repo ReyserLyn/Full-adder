@@ -1,6 +1,6 @@
 "use client";
 
-import { AddersList } from '../components/adders/AddersList.tsx';
+import { AddersList } from "@/components/adders/AddersList";
 
 export default function Home() {
   return (
