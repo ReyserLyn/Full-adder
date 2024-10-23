@@ -13,9 +13,9 @@ import { usePathname } from "next/navigation";
 
 const links = [
   { href: "/", label: "Inicio" },
-  { href: "/sumador1bit", label: "Sumador 1 bit" },
-  { href: "/sumador4bit", label: "Sumador 4 bit" },
-  { href: "/sumador8bit", label: "Sumador 8 bit" },
+  { href: "/sumador-1-bit", label: "Sumador 1 bit" },
+  { href: "/sumador-4-bits", label: "Sumador 4 bit" },
+  { href: "/sumador-8-bits", label: "Sumador 8 bit" },
 ];
 
 export default function NavbarOptions() {

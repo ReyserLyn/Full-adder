@@ -22,17 +22,17 @@ export function getSidebarOptions(): SidebarOptions[] {
           icon: House,
         },
         {
-          href: "/sumador1bit",
+          href: "/sumador-1-bit",
           label: "Sumador 1 bit",
           icon: Plus,
         },
         {
-          href: "/sumador4bit",
+          href: "/sumador-4-bits",
           label: "Sumador 4 bit",
           icon: Plus,
         },
         {
-          href: "/sumador8bit",
+          href: "/sumador-8-bits",
           label: "Sumador 8 bit",
           icon: Plus,
         },
