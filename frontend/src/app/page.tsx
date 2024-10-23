@@ -5,13 +5,11 @@ import Hero from "@/components/pages/home/Hero";
 
 export default function HomePage() {
   return (
-    <main className="relative size-full flex flex-col flex-1 bg-white">
-      <div className="relative z-10 ">
-        <Hero />
-        <Adders />
-        <Features />
-        <Cta />
-      </div>
+    <main className="relative size-full flex flex-col flex-1">
+      <Hero />
+      <Adders />
+      <Features />
+      <Cta />
     </main>
   );
 }
