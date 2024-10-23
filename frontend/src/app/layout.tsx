@@ -1,3 +1,4 @@
+import Navbar from "@/components/layout/Navbar";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./styles/globals.css";
@@ -26,6 +27,7 @@ export default function RootLayout({
         className="flex flex-col min-h-svh w-full avif"
         suppressHydrationWarning
       >
+        <Navbar />
         {children}
       </body>
     </html>
