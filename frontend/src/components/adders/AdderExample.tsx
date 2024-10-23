@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import NumberInput from "@/components/adders/NumberInput";
 
 interface AdderExampleProps {
   sumType: string;
@@ -27,6 +28,9 @@ const AdderExample: React.FC<AdderExampleProps> = ({ sumType }) => {
         body: JSON.stringify({
           num1: parseInt(num1, 10),
           num2: parseInt(num2, 10),
+          // This is needed for the server to know which sumType to use
+          // Enable when the server supports it
+          // sumType: sumeType,
         }),
       });
 
@@ -48,28 +52,8 @@ const AdderExample: React.FC<AdderExampleProps> = ({ sumType }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>
-            Número 1:
-            <input
-              type="number"
-              value={num1}
-              onChange={(e) => setNum1(e.target.value)}
-              required
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Número 2:
-            <input
-              type="number"
-              value={num2}
-              onChange={(e) => setNum2(e.target.value)}
-              required
-            />
-          </label>
-        </div>
+        <NumberInput value={num1} onChange={setNum1} label={"Number 1"} />
+        <NumberInput value={num2} onChange={setNum2} label={"Number 2"} />
         <button type="submit">Sumar</button>
       </form>
 
