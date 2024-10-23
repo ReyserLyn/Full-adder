@@ -8,7 +8,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import { data } from "@/data_static/data";
+import { data } from "@/lib/data/data";
 import AdderCard from "./AdderCard";
 import AdderExample from "./AdderExample";
 
