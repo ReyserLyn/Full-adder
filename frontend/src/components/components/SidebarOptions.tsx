@@ -10,12 +10,12 @@ export function SideBarOptions({
   setOpen?: (value: boolean) => void;
 }) {
   const pathname = usePathname();
-  const sidebarOptions = getSidebarOptions(pathname);
+  const sidebarOptions = getSidebarOptions();
 
   return (
     <nav className="h-full w-full mt-3">
       <ul className="flex flex-col items-start space-y-1 px-2">
-        {sidebarOptions.map(({ groupLabel, menus }) => (
+        {sidebarOptions.map(({ groupLabel, items: menus }) => (
           <li
             className={`w-full ${groupLabel ? "pt-5" : ""}`}
             key={`${groupLabel}`}

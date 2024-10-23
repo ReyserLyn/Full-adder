@@ -6,16 +6,16 @@ type SidebarItem = {
   icon: LucideIcon;
 };
 
-type Section = {
+type SidebarOptions = {
   groupLabel: string;
-  menus: SidebarItem[];
+  items: SidebarItem[];
 };
 
-export function getSidebarOptions(pathname: string): Section[] {
+export function getSidebarOptions(): SidebarOptions[] {
   return [
     {
       groupLabel: "",
-      menus: [
+      items: [
         {
           href: "/",
           label: "Inicio",
