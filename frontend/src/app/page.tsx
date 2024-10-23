@@ -1,13 +1,13 @@
-"use client";
-
 import { AddersList } from "@/components/adders/AddersList";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-white">
-      <div className="container mx-auto px-4 py-16">
+    <main className="relative size-full min-h-screen bg-white">
+      <div className="absolute size-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+
+      <div className="container px-4 py-16">
         <AddersList />
       </div>
-    </div>
+    </main>
   );
 }
