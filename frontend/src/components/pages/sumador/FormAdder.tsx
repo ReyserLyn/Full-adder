@@ -16,15 +16,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import FullAdder from "@/lib/sumador-1bit";
-import FullAdder4Bit from "@/lib/sumador-4bit";
-import FullAdder8Bit from "@/lib/sumador-8bit";
+import { useState } from "react";
+import ac from "@/lib/addersAvailables";
 
 interface FormAdderProps {
   size: number;
 }
 
 export default function FormAdder({ size }: FormAdderProps) {
+  const [sum, setSum] = useState<number>(0);
+  const [carry, setCarry] = useState<number>(0);
+
   const formSchema = z.object({
     bitValue1: z
       .string()
@@ -45,14 +47,23 @@ export default function FormAdder({ size }: FormAdderProps) {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    const func = ac[size];
+    const value1 = parseInt(values.bitValue1, 2);
+    const value2 = parseInt(values.bitValue2, 2);
+
+    const res = func(value1, value2, 0);
+    const resultSum = res["sum"];
+    const sumCarry = res["carry_out"];
+
+    setSum(resultSum);
+    setCarry(sumCarry);
   }
 
   return (
-    <section className="container py-16 bg-transparent flex flex-col gap-8">
-      <Form {...form}>
+    <section className="container py-16 bg-transparent flex flex-col gap-8 text-lg">
+      <Form {...form} className="text-lg">
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <div className="flex flex-col sm:flex-row items-center gap-5 ">
+          <div className="flex flex-col sm:flex-row items-center gap-5 justify-center">
             <FormField
               control={form.control}
               name="bitValue1"
@@ -106,22 +117,21 @@ export default function FormAdder({ size }: FormAdderProps) {
             <Button type="submit">Submit</Button>
           </div>
         </form>
-      </Form>
-        <div className="flex justify-center gap-10">
+        <div className="flex justify-center gap-10 font-medium">
           <div className="flex flex-col gap-2">
-            <label className="flex justify-center" htmlFor="result">Suma:</label>
-            <span id="result" className="flex rounded-md border border-input bg-transparent px-3 py-1 text-lg justify-center shadow-sm">
-              100110
+            <label className="flex justify-center" htmlFor="result">Suma</label>
+            <span id="result" className="flex rounded-md border border-input bg-transparent px-3 py-1 justify-center shadow-sm font-normal">
+              {sum.toString(2).padStart(size, "0")}
             </span>
           </div>
           <div className="flex flex-col gap-2">
-            <label className="flex justify-center" htmlFor="carry">Acarreo:</label>
-            <span id="carry" className="flex rounded-md border border-input bg-transparent px-3 py-1 text-lg justify-center shadow-sm">
-              1
+            <label className="flex justify-center" htmlFor="carry">Acarreo</label>
+            <span id="carry" className="flex rounded-md border border-input bg-transparent px-3 py-1 justify-center shadow-sm font-normal">
+              {carry.toString(2)}
             </span>
           </div>
-
         </div>
+      </Form>
     </section>
   );
 }
