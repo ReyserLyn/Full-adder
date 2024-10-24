@@ -39,25 +39,12 @@ export default function Sumador4BitsPage() {
             se utiliza como entrada para la siguiente suma.
           </p>
 
-          <h2 className="text-2xl font-semibold text-gray-800">
-            Compuertas Lógicas
-          </h2>
+          <h2 className="text-2xl font-semibold text-gray-800">Lógica</h2>
           <p className="leading-7 text-gray-700">
-            Las compuertas lógicas utilizadas en un sumador de 4 bits son las
-            siguientes:
+            Se creó el sumador de 4 bits conectando sumadores completos en
+            cascada de 1 bit, dicho proceso se observa mejor en el digrama de
+            bloques del inicio.
           </p>
-          <ul className="list-disc ml-5 leading-7 text-gray-700">
-            <li>
-              <strong>XOR:</strong> Se usa para calcular la suma de los bits.
-            </li>
-            <li>
-              <strong>AND:</strong> Determina si debe generarse un acarreo.
-            </li>
-            <li>
-              <strong>OR:</strong> Combina las señales de acarreo de múltiples
-              bits.
-            </li>
-          </ul>
 
           <h2 className="text-2xl font-semibold text-gray-800">Ejemplo</h2>
           <p className="leading-7 text-gray-700">
@@ -74,6 +61,14 @@ export default function Sumador4BitsPage() {
             </li>
           </ul>
 
+          <Image
+            src={"/img/ejemplo_sumador_4bits.webp"}
+            width={500}
+            height={250}
+            alt="imagen del sumador de 4 bits"
+            className="self-center my-8"
+          />
+
           <h2 className="text-2xl font-semibold text-gray-800">Aplicaciones</h2>
           <p className="leading-7 text-gray-700">
             Los sumadores de 4 bits se utilizan en diversas aplicaciones,
@@ -82,7 +77,20 @@ export default function Sumador4BitsPage() {
           <ul className="list-disc ml-5 leading-7 text-gray-700">
             <li>Operaciones aritméticas en microcontroladores.</li>
             <li>Componentes en circuitos integrados.</li>
-            <li>Construcción de unidades aritmético-lógicas (ALU).</li>
+            <li>
+              Construcción de unidades aritmético-lógicas (ALU).
+              <ul className="list-decimal ml-5 leading-7 text-gray-700">
+                <li>
+                  Un sumador de 4 bits se emplea en unidades aritmético-lógicas
+                  (ALU) de procesadores de 4 bits, como en microprocesadores
+                  antiguos o sistemas embebidos de bajo costo. Este circuito es
+                  fundamental para realizar cálculos sencillos y operaciones
+                  lógicas en dispositivos que no requieren manejar grandes
+                  cantidades de datos, optimizando el rendimiento y reduciendo
+                  el tamaño del hardware.
+                </li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>

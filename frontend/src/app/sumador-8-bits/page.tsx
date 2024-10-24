@@ -38,27 +38,36 @@ export default function Sumador8BitsPage() {
             significativo como entrada para el sumador más significativo.
           </p>
 
-          <h2 className="text-2xl font-semibold text-gray-800">
-            Compuertas Lógicas
-          </h2>
+          <h2 className="text-2xl font-semibold text-gray-800">Lógica</h2>
           <p className="leading-7 text-gray-700">
-            Las compuertas lógicas utilizadas son similares a las del sumador de
-            4 bits, con la adición de más instancias de cada compuerta para
-            manejar los bits adicionales.
+            Para construir un sumador de 8 bits, puedes conectar dos sumadores
+            de 4 bits en serie. El acarreo de salida del primer sumador (el de
+            los bits menos significativos) se conecta a la entrada de acarreo
+            del segundo sumador.
+            <br />
+            Los cuatro primeros bits (A0 a A3 y B0 a B3) se suman utilizando un
+            sumador de 4 bits, y el acarreo generado se pasa como entrada al
+            siguiente sumador de 4 bits, que suma los cuatro bits más
+            significativos (A4 a A7 y B4 a B7).
           </p>
-          <ul className="list-disc ml-5 leading-7 text-gray-700">
-            <li>
-              <strong>XOR:</strong> Para calcular la suma de cada par de bits.
-            </li>
-            <li>
-              <strong>AND:</strong> Para determinar si hay que generar un
-              acarreo.
-            </li>
-            <li>
-              <strong>OR:</strong> Para combinar las señales de acarreo de cada
-              grupo de bits.
-            </li>
-          </ul>
+
+          <div className="flex lg:flex-row flex-col items-center justify-center">
+            <Image
+              src={"/img/ex1_sumador_8bits.webp"}
+              width={500}
+              height={250}
+              alt="imagen del sumador de 8 bits"
+              className="self-center my-8"
+            />
+
+            <Image
+              src={"/img/ex2_sumador_8bits.webp"}
+              width={500}
+              height={250}
+              alt="imagen del sumador de 8 bits"
+              className="self-center my-8"
+            />
+          </div>
 
           <h2 className="text-2xl font-semibold text-gray-800">Ejemplo</h2>
           <p className="leading-7 text-gray-700">
@@ -76,9 +85,20 @@ export default function Sumador8BitsPage() {
             Los sumadores de 8 bits son utilizados en:
           </p>
           <ul className="list-disc ml-5 leading-7 text-gray-700">
-            <li>Microprocesadores para operaciones aritméticas.</li>
             <li>Controladores de hardware y sistemas embebidos.</li>
             <li>Sistemas de comunicación y procesamiento de datos.</li>
+            <li>
+              Microprocesadores para operaciones aritméticas.
+              <ul className="list-disc ml-5 leading-7 text-gray-700">
+                <li>
+                  Un sumador de 8 bits puede ser útil en sistemas que necesitan
+                  realizar operaciones aritméticas con números relativamente
+                  grandes, como en microprocesadores o controladores. Es crucial
+                  optimizar estos circuitos para maximizar la velocidad y
+                  reducir el consumo de energía en dispositivos electrónicos.
+                </li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
