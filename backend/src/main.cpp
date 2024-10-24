@@ -1,4 +1,3 @@
-#include <iostream>
 #include <thread>
 #include <chrono>
 #include <cpprest/http_listener.h>
@@ -14,6 +13,7 @@ public:
   MainAPI(const std::string &address) : m_listener(address)
   {
     m_listener.support(methods::GET, std::bind(&MainAPI::handle_get, this, std::placeholders::_1));
+    m_listener.support(methods::OPTIONS, std::bind(&MainAPI::handle_options, this, std::placeholders::_1)); // Soporte para OPTIONS
   }
 
   void start()
@@ -26,12 +26,34 @@ public:
   void handle_get(http_request request)
   {
     ucout << "Received GET request" << std::endl;
+
     json::value response;
     response[U("message")] = json::value::string(U("OK"));
-    request.reply(status_codes::OK, response);
+
+    http_response httpResponse(status_codes::OK);
+    add_cors_headers(httpResponse);
+    httpResponse.set_body(response);
+
+    request.reply(httpResponse);
+  }
+
+  void handle_options(http_request request)
+  {
+    ucout << "Received OPTIONS request (preflight)" << std::endl;
+
+    http_response response(status_codes::OK);
+    add_cors_headers(response);
+    request.reply(response);
   }
 
 private:
+  void add_cors_headers(http_response &response)
+  {
+    response.headers().add(U("Access-Control-Allow-Origin"), U("*"));
+    response.headers().add(U("Access-Control-Allow-Methods"), U("GET, POST, OPTIONS"));
+    response.headers().add(U("Access-Control-Allow-Headers"), U("Content-Type"));
+  }
+
   http_listener m_listener;
 };
 
