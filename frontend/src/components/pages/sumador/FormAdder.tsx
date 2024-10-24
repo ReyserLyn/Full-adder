@@ -136,6 +136,11 @@ export default function FormAdder({ size }: FormAdderProps) {
             <Button type="submit">Submit</Button>
           </div>
         </form>
+
+        <h2 className="mt-32 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+          Sumador de 1 Bit (Expliación)
+        </h2>
+
         <div className="flex justify-center gap-10 font-medium">
           <div className="flex flex-col gap-2">
             <label className="flex justify-center" htmlFor="carry">
