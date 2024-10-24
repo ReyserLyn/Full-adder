@@ -45,7 +45,7 @@ export default function FormAdder({ size }: FormAdderProps) {
   }
 
   return (
-    <section className="container py-16 bg-white flex justify-center">
+    <section className="container py-16 bg-transparent flex flex-col gap-8">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <div className="flex flex-col sm:flex-row items-center gap-5 ">
@@ -98,11 +98,26 @@ export default function FormAdder({ size }: FormAdderProps) {
               )}
             />
           </div>
-          <div className="flex justify-end">
+          <div className="flex justify-center">
             <Button type="submit">Submit</Button>
           </div>
         </form>
       </Form>
+        <div className="flex justify-center gap-10">
+          <div className="flex flex-col gap-2">
+            <label className="flex justify-center" htmlFor="result">Suma:</label>
+            <span id="result" className="flex rounded-md border border-input bg-transparent px-3 py-1 text-lg justify-center shadow-sm">
+              100110
+            </span>
+          </div>
+          <div className="flex flex-col gap-2">
+            <label className="flex justify-center" htmlFor="carry">Acarreo:</label>
+            <span id="carry" className="flex rounded-md border border-input bg-transparent px-3 py-1 text-lg justify-center shadow-sm">
+              1
+            </span>
+          </div>
+
+        </div>
     </section>
   );
 }
