@@ -1,5 +1,8 @@
-export default function FullAdder1Bit(a: number, b: number, carry_in : number){
-  const sum = a ^ b ^ carry_in;
-  const carry_out = (a & b) | (carry_in & (a ^ b));
-  return {sum, carry_out};
+import { AND, OR, XOR } from "./utils";
+
+export function fullAdder1Bit(a: number, b: number, carryIn: number) {
+  const sumAB = XOR(a, b);
+  const sum = XOR(sumAB, carryIn);
+  const carryOut = OR(AND(a, b), AND(carryIn, sumAB));
+  return { sum, carryOut };
 }

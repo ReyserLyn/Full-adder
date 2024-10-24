@@ -10,14 +10,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Plus } from "lucide-react";
-
+import { fullAdder1Bit } from "@/lib/sumador-1bit";
+import { fullAdder4Bit } from "@/lib/sumador-4bit";
+import { fullAdder8Bit } from "@/lib/sumador-8bit";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Plus } from "lucide-react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
-import { useState } from "react";
-import ac from "@/lib/addersAvailables";
 
 interface FormAdderProps {
   size: number;
@@ -47,22 +47,35 @@ export default function FormAdder({ size }: FormAdderProps) {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const func = ac[size];
     const value1 = parseInt(values.bitValue1, 2);
     const value2 = parseInt(values.bitValue2, 2);
+    let res;
 
-    const res = func(value1, value2, 0);
-    const resultSum = res["sum"];
-    const sumCarry = res["carry_out"];
+    switch (size) {
+      case 1:
+        res = fullAdder1Bit(value1, value2, 0);
+        break;
+      case 4:
+        res = fullAdder4Bit(value1, value2, 0);
+        break;
+      case 8:
+        res = fullAdder8Bit(value1, value2, 0);
+        break;
+      default:
+        res = { sum: 0, carryOut: 0 };
+    }
 
-    setSum(resultSum);
-    setCarry(sumCarry);
+    setSum(res.sum);
+    setCarry(res.carryOut);
   }
 
   return (
-    <section className="container py-16 bg-transparent flex flex-col gap-8 text-lg">
-      <Form {...form} className="text-lg">
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+    <section className="container py-16 bg-transparent flex flex-col gap-8 text-lg bg-white">
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8 text-lg"
+        >
           <div className="flex flex-col sm:flex-row items-center gap-5 justify-center">
             <FormField
               control={form.control}
@@ -72,15 +85,9 @@ export default function FormAdder({ size }: FormAdderProps) {
                   <FormLabel>Valor 1</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Ingrese operador 1"
+                      placeholder={`Ingrese ${size} bits`}
                       {...field}
                       maxLength={size}
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        if (/^[01]*$/.test(value)) {
-                          field.onChange(value);
-                        }
-                      }}
                     />
                   </FormControl>
                   <FormMessage />
@@ -88,7 +95,6 @@ export default function FormAdder({ size }: FormAdderProps) {
               )}
             />
             <Plus size={24} className="mt-7" />
-
             <FormField
               control={form.control}
               name="bitValue2"
@@ -97,15 +103,9 @@ export default function FormAdder({ size }: FormAdderProps) {
                   <FormLabel>Valor 2</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Ingrese operador 2"
+                      placeholder={`Ingrese ${size} bits`}
                       {...field}
                       maxLength={size}
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        if (/^[01]*$/.test(value)) {
-                          field.onChange(value);
-                        }
-                      }}
                     />
                   </FormControl>
                   <FormMessage />
@@ -119,15 +119,26 @@ export default function FormAdder({ size }: FormAdderProps) {
         </form>
         <div className="flex justify-center gap-10 font-medium">
           <div className="flex flex-col gap-2">
-            <label className="flex justify-center" htmlFor="result">Suma</label>
-            <span id="result" className="flex rounded-md border border-input bg-transparent px-3 py-1 justify-center shadow-sm font-normal">
-              {sum.toString(2).padStart(size, "0")}
+            <label className="flex justify-center" htmlFor="carry">
+              Acarreo
+            </label>
+            <span
+              id="carry"
+              className="flex rounded-md border border-input bg-transparent px-3 py-1 justify-center shadow-sm font-normal"
+            >
+              {carry.toString(2)}
             </span>
           </div>
+
           <div className="flex flex-col gap-2">
-            <label className="flex justify-center" htmlFor="carry">Acarreo</label>
-            <span id="carry" className="flex rounded-md border border-input bg-transparent px-3 py-1 justify-center shadow-sm font-normal">
-              {carry.toString(2)}
+            <label className="flex justify-center" htmlFor="result">
+              Suma
+            </label>
+            <span
+              id="result"
+              className="flex rounded-md border border-input bg-transparent px-3 py-1 justify-center shadow-sm font-normal"
+            >
+              {sum.toString(2).padStart(size, "0")}
             </span>
           </div>
         </div>
