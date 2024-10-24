@@ -8,7 +8,7 @@ export default function Sumador8BitsPage() {
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center py-5">
           Sumador de 8 Bits
         </h1>
-        <FormAdder size={1} />
+        <FormAdder size={8} />
 
         <div className="flex flex-col gap-8">
           <p className="leading-7 [&:not(:first-child)]:mt-6">
