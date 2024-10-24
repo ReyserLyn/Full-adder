@@ -16,6 +16,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+import FullAdder from "@/lib/sumador-1bit";
+import FullAdder4Bit from "@/lib/sumador-4bit";
+import FullAdder8Bit from "@/lib/sumador-8bit";
+
 interface FormAdderProps {
   size: number;
 }
