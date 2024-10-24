@@ -1,3 +1,9 @@
+import FormAdder from "@/components/pages/sumador/FormAdder";
+
 export default function Sumador4BitsPage() {
-  return <div>sumador de 4 bits</div>;
+  return (
+    <main className="w-full">
+      <FormAdder size={4} />
+    </main>
+  );
 }
