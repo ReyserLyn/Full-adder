@@ -68,14 +68,6 @@ export default function Sumador1BitPage() {
             <li>Componentes en circuitos integrados.</li>
             <li>Fundamentos en la construcción de calculadoras digitales.</li>
           </ul>
-
-          <h2 className="text-2xl font-semibold text-gray-800">Conclusión</h2>
-          <p className="leading-7 text-gray-700">
-            Comprender cómo funciona un sumador de 1 bit es esencial para el
-            diseño de circuitos digitales más complejos. Este simple pero
-            poderoso componente es la base sobre la que se construyen las
-            operaciones aritméticas en los sistemas digitales modernos.
-          </p>
         </div>
       </div>
     </main>

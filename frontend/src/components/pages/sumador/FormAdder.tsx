@@ -72,7 +72,7 @@ export default function FormAdder({ size }: FormAdderProps) {
 
   return (
     <section className="container py-16 bg-transparent flex flex-col gap-8 text-lg bg-white">
-      <div className="flex justify-center items-center gap-48">
+      <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-48">
         <div className="flex justify-center items-center font-medium ">
           Resultado (Binario):
           <span className="flex px-3 py-1 justify-center font-normal">
@@ -138,7 +138,7 @@ export default function FormAdder({ size }: FormAdderProps) {
         </form>
 
         <h2 className="mt-32 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-          Sumador de 1 Bit (Expliación)
+          Sumador de {size} Bit(s) (Expliación)
         </h2>
 
         <div className="flex justify-center gap-10 font-medium">
