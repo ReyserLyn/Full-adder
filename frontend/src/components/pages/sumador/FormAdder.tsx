@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { fullAdder1Bit } from "@/lib/sumador-1bit";
 import { fullAdder4Bit } from "@/lib/sumador-4bit";
 import { fullAdder8Bit } from "@/lib/sumador-8bit";
+import { binaryToDecimal } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Plus } from "lucide-react";
 import { useState } from "react";
@@ -71,6 +72,24 @@ export default function FormAdder({ size }: FormAdderProps) {
 
   return (
     <section className="container py-16 bg-transparent flex flex-col gap-8 text-lg bg-white">
+      <div className="flex justify-center items-center gap-48">
+        <div className="flex justify-center items-center font-medium ">
+          Resultado (Binario):
+          <span className="flex px-3 py-1 justify-center font-normal">
+            {carry === 0 ? "" : carry.toString(2)}
+            {sum.toString(2).padStart(size, "0")}
+          </span>
+        </div>
+        <div className="flex justify-center items-center font-medium ">
+          Resultado (Decimal):
+          <span className="flex px-3 py-1 justify-center font-normal">
+            {binaryToDecimal(
+              carry.toString(2) + sum.toString(2).padStart(size, "0")
+            )}
+          </span>
+        </div>
+      </div>
+
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}

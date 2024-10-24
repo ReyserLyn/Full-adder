@@ -1,17 +1,15 @@
-import { fullAdder1Bit } from "./sumador-1bit";
+import { fullAdder4Bit } from "./sumador-4bit";
 
 export function fullAdder8Bit(a: number, b: number, carryIn: number) {
-  let carry = carryIn;
-  let result = 0;
+  const lower4Bits = fullAdder4Bit(a & 0xf, b & 0xf, carryIn); // 0xF es 1111 en binario
 
-  for (let i = 0; i < 8; i++) {
-    const bitA = (a >> i) & 1;
-    const bitB = (b >> i) & 1;
-    const { sum, carryOut } = fullAdder1Bit(bitA, bitB, carry);
+  const upper4Bits = fullAdder4Bit(
+    (a >> 4) & 0xf,
+    (b >> 4) & 0xf,
+    lower4Bits.carryOut
+  );
 
-    result |= sum << i;
-    carry = carryOut;
-  }
+  const result = (upper4Bits.sum << 4) | lower4Bits.sum;
 
-  return { sum: result, carryOut: carry };
+  return { sum: result, carryOut: upper4Bits.carryOut };
 }

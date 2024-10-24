@@ -16,3 +16,14 @@ export function OR(a: number, b: number): number {
 export function XOR(a: number, b: number): number {
   return a ^ b;
 }
+
+export function binaryToDecimal(binaryString: string): number {
+  console.log(binaryString);
+  if (!/^[01]+$/.test(binaryString)) {
+    throw new Error(
+      "La cadena debe contener solo caracteres binarios (0 y 1)."
+    );
+  }
+
+  return parseInt(binaryString, 2);
+}
