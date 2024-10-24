@@ -69,6 +69,14 @@ export default function Sumador4BitsPage() {
             className="self-center my-8"
           />
 
+          <Image
+            src={"/img/sumador_4.webp"}
+            width={500}
+            height={250}
+            alt="imagen del sumador de 1 bit"
+            className="self-center my-8"
+          />
+
           <h2 className="text-2xl font-semibold text-gray-800">Aplicaciones</h2>
           <p className="leading-7 text-gray-700">
             Los sumadores de 4 bits se utilizan en diversas aplicaciones,

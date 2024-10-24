@@ -69,6 +69,14 @@ export default function Sumador8BitsPage() {
             />
           </div>
 
+          <Image
+            src={"/img/sumador_8.webp"}
+            width={500}
+            height={250}
+            alt="imagen del sumador de 1 bit"
+            className="self-center my-8"
+          />
+
           <h2 className="text-2xl font-semibold text-gray-800">Ejemplo</h2>
           <p className="leading-7 text-gray-700">
             Consideremos sumar 01101000 (104 en decimal) y 00000111 (7 en

@@ -58,6 +58,24 @@ export default function Sumador1BitPage() {
             className="self-center my-8"
           />
 
+          <div className="flex xl:flex-row flex-col gap-5">
+            <Image
+              src={"/img/compuertas.webp"}
+              width={500}
+              height={250}
+              alt="imagen del sumador de 1 bit"
+              className="self-center my-8"
+            />
+
+            <Image
+              src={"/img/sumador_1.webp"}
+              width={500}
+              height={250}
+              alt="imagen del sumador de 1 bit"
+              className="self-center my-8"
+            />
+          </div>
+
           <h2 className="text-2xl font-semibold text-gray-800">Aplicaciones</h2>
           <p className="leading-7 text-gray-700">
             Los sumadores de 1 bit se utilizan en diversas aplicaciones,
